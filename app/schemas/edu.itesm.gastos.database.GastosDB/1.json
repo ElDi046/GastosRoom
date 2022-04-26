@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f55289a13df21ba61d8823ff1f9f8954",
+    "identityHash": "3afb9e606391f2a52bbd256e2424cbad",
     "entities": [
       {
         "tableName": "Gasto",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `description` TEXT NOT NULL, `monto` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `description` TEXT NOT NULL, `amount` REAL NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -21,8 +21,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "monto",
-            "columnName": "monto",
+            "fieldPath": "amount",
+            "columnName": "amount",
             "affinity": "REAL",
             "notNull": true
           }
@@ -40,7 +40,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f55289a13df21ba61d8823ff1f9f8954')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3afb9e606391f2a52bbd256e2424cbad')"
     ]
   }
 }
