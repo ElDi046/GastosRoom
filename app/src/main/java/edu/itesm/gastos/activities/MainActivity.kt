@@ -73,7 +73,8 @@ class MainActivity : AppCompatActivity() {
             agregaDatosLauncher.launch(intento)*/
             GastoCapturaDialog(onSubmitClickListener = { gasto ->
                 Toast.makeText(baseContext, gasto.description, Toast.LENGTH_LONG).show()
-                //gastoDao.insertGasto(gasto)
+                viewModel.insetaGastos(gastoDao,gasto)
+
             }).show(supportFragmentManager,"")
         }
     }

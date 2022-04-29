@@ -26,10 +26,23 @@ class MainActivityViewModel : ViewModel(){
 
     fun getGastos(gastoDao: GastoDao){
         CoroutineScope(Dispatchers.IO).launch{
-            for(i in 0..100){
+            for(i in 0..5){
                 gastoDao.insertGasto(Gasto(0,"Gasto ${i}", Random.nextDouble() * 100))
             }
             liveData.postValue(gastoDao.getAllGastos())
         }
     }
+
+    fun insetaGastos(gastoDao: GastoDao, gasto: Gasto){
+        CoroutineScope(Dispatchers.IO).launch{
+
+                gastoDao.insertGasto(Gasto(0, gasto.description,  gasto.amount))
+
+            liveData.postValue(gastoDao.getAllGastos())
+        }
+    }
+
+
+
+
 }
