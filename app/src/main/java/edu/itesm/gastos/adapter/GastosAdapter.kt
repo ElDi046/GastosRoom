@@ -12,6 +12,7 @@ class GastosAdapter(private var gastos: List<Gasto>) :
     fun setGastos(gastos: List<Gasto>){
         this.gastos = gastos
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GastoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return GastoViewHolder(layoutInflater.inflate(R.layout.gasto,
@@ -19,7 +20,6 @@ class GastosAdapter(private var gastos: List<Gasto>) :
     }
 
     override fun getItemCount(): Int = gastos.size
-
 
     override fun onBindViewHolder(holder: GastoViewHolder, position: Int) {
         val item = gastos[position]

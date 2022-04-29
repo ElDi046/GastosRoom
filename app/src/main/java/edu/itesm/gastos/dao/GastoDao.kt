@@ -8,7 +8,8 @@ interface GastoDao{
       @Query("SELECT * FROM Gasto")
       suspend fun getAllGastos():List<Gasto>
 
-      //"select sum(amount) from Gasto" <--- Saca la sumatoria de los valores de la columna
+      @Query("select sum(amount) from Gasto")
+      suspend fun sumAllGastos(): Double
 
       @Insert
       suspend fun insertGasto(gasto: Gasto)

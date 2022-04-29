@@ -27,7 +27,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     private lateinit var gastoDao: GastoDao
-    private lateinit var  gastos: List<Gasto>
+    private lateinit var gastos: List<Gasto>
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: GastosAdapter
     private lateinit var viewModel : MainActivityViewModel
@@ -58,6 +58,12 @@ class MainActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         })
+        viewModel.getLiveData1Observer().observe(this, Observer {
+            GastoCapturaDialog(onSubmitClickListener = { gasto ->
+                Toast.makeText(baseContext, gasto.description, Toast.LENGTH_LONG).show()
+                viewModel.sumaGastos(gastoDao)
+            }).show(supportFragmentManager,"")
+        })
         viewModel.getGastos(gastoDao)
     }
 
@@ -73,8 +79,7 @@ class MainActivity : AppCompatActivity() {
             agregaDatosLauncher.launch(intento)*/
             GastoCapturaDialog(onSubmitClickListener = { gasto ->
                 Toast.makeText(baseContext, gasto.description, Toast.LENGTH_LONG).show()
-                viewModel.insetaGastos(gastoDao,gasto)
-
+                viewModel.insetaGastos(gastoDao, gasto)
             }).show(supportFragmentManager,"")
         }
     }
